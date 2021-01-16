@@ -1,7 +1,13 @@
 <template>
   <div class="Search">
     <b-form>
-      <b-form-input placeholder="Search" ></b-form-input>
+      <b-input-group>
+        <b-form-input v-model="search" placeholder="Search" id="search" type="search" @input="$emit('searchData', search)"></b-form-input>
+        <b-input-group-append>
+          <b-button :disabled="!search" @click="search = ''">Clear</b-button>
+        </b-input-group-append>
+      </b-input-group>
+      
     </b-form>
   </div>
 </template>
@@ -9,11 +15,11 @@
 <script>
 export default {
   name: 'Search',
-  filteredList() {
-    return this.postList.filter(post => {
-      return post.title.toLowerCase().includes(this.search.toLowerCase())
-    })
-  }
+  data(){
+    return{
+      search: ''
+    }
+  },
 }
 </script>
 

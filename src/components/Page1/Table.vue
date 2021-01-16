@@ -1,19 +1,49 @@
 <template>
     <div id="Table">
-        <b-table class="mt-5" striped hover :items="getDataForm" border></b-table>
+        <b-table class="mt-5" responsive bordered striped hover :items="getDataForm" :filter="searchDataTable" :fields="fields">
+            <template #cell(actions)="row">
+                <b-button size="sm" @click="editDataForm(row.item)" variant="warning">
+                    <b-icon icon="pencil-square"></b-icon>
+                </b-button>
+            </template>
+        </b-table>
+        <!-- {{searchDataTable}} -->
     </div>
 </template>
 
 <script>
+// import Search from './Search'
+
 export default {
     name: 'Table',
+    components:{
+        // Search
+    },
+    props: ['searchDataTable'],
     data() {
         return {
-            items: [
-                { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-                { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-                { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-                { age: 38, first_name: 'Jami', last_name: 'Carney' }
+            fields:[
+                {
+                    key: 'name',                    
+                },
+                {
+                    key: 'lastname'
+                },
+                {
+                    key: 'date'
+                },
+                {
+                    key: 'dateStart'
+                },
+                {
+                    key: 'dateEnd'
+                },
+                {
+                    key: 'remark'
+                },
+                {
+                    key: 'actions'
+                },
             ]
         }
     },
@@ -21,6 +51,12 @@ export default {
         getDataForm(){
             return this.$store.getters.getDataForm
         }
+    },
+    methods:{
+        editDataForm(item){
+            this.$store.dispatch('postIdEdit', item.id)
+            this.$router.push('/Form')
+        },
     }
 }
 </script>

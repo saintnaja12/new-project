@@ -3,8 +3,8 @@
         <b-container>
             <b-row>
                 <b-col cols="6"><ButtonAdd /></b-col>
-                <b-col cols="6"><Search /></b-col>
-                <b-col><Table /></b-col>
+                <b-col cols="6"><Search @searchData="searchFilter" /></b-col>
+                <b-col><Table :searchDataTable="searchData"/></b-col>
             </b-row>
         </b-container>
         
@@ -19,10 +19,20 @@ import Table from '@/components/Page1/Table.vue'
 
 export default {
   name: 'Home',
+  data(){
+    return{
+      searchData: ''
+    }
+  },
   components: {
     Search,
     ButtonAdd,
     Table,
-  }
+  },
+  methods:{
+    searchFilter(search){
+      this.searchData = search
+    }
+  },
 }
 </script>
