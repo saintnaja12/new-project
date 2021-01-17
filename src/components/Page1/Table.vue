@@ -12,12 +12,10 @@
 </template>
 
 <script>
-// import Search from './Search'
 
 export default {
     name: 'Table',
     components:{
-        // Search
     },
     props: ['searchDataTable'],
     data() {

@@ -1,36 +1,50 @@
 <template>
     <div id="Form">
         <b-card>
-            <h1 v-if="this.id === 0">Form Create Data</h1>
+            <h1 v-if="getIdEdit === 0">Form Create Data</h1>
             <h1 v-else>Form Edit Data</h1>
-            <b-form @submit.prevent="addDataTable()">
+                        {{getIdEdit}}
+            <b-form>
                 <b-row>
                     <b-col cols="sm-6">
-                        <Name />
+                        <Name @nameInput="nameGet" :nameEdit="form.name"/>
                     </b-col>
 
                     <b-col cols="sm-6">
-                        <Lastname />
+                        <Lastname @lastnameInput="lastnameGet" :lastnameEdit="form.lastname"/>
                     </b-col>
 
                     <b-col cols="sm-2">
-                        <Calendar />
+                        <Calendar @selectedDate="getSelectedDated" />
                     </b-col>
 
                     <b-col cols="sm-10">
-                        <Date />
+                        <Date 
+                            :dateOption="selectedDate" 
+                            @dateInput="dateGet" 
+                            @startInput="startGet" 
+                            @endInput="endGet"
+
+                            :dateEdit="form.date"
+                            :startEdit="form.datestart"
+                            :endEdit="form.dateend"
+                        />
                     </b-col>
 
                     <b-col cols="12">
-                        <Remark />
+                        <Remark @remarkInput="remarkGet" :remarkEdit="form.remark"/>
                     </b-col>
 
                     <b-col cols="6">
-                        <btnSubmit></btnSubmit>
+                        <btnSubmit
+                            :formCommit="form"
+                        ></btnSubmit>
                     </b-col>
 
                     <b-col cols="6">
-                        <btnCancel></btnCancel>
+                        <btnCancel
+
+                        ></btnCancel>
                     </b-col>
 
                 </b-row>
@@ -63,47 +77,61 @@
             btnCancel
         },
         data() {
-            return {
-                id:0,  
+            return {   
+                selectedDate: '', 
+                
+                form:{
+                    id:0, 
+                    name: '',
+                    lastname: '',
+                    date: '',
+                    dateStart: '',
+                    dateEnd: '',
+                    remark: ''
+                },
+                
             }
         },
         methods: {
-            addDataTable() {
-                let payload = {
-                    id: this.id,
-                    name: this.name,
-                    lastname: this.lastname,
-                    remark: this.remark,
-
-                    date: this.date,
-                    dateStart: this.dateStart,
-                    dateEnd: this.dateEnd
-                }
-                this.$store.dispatch('addDataTable', payload)
-                alert('Success!')
-
-                this.name = ''
-                this.lastname = ''
-                this.remark = ''
-
-                this.date = ''
-                this.dateStart = null
-                this.dateEnd = null
-
-                this.$router.push('/')
+            // commit all 
+            getSelectedDated(selectedParam){
+                this.selectedDate = selectedParam
             },
-            showEdit(){
+            nameGet(nameParam){
+                this.form.name = nameParam
+            },
+            lastnameGet(lastnameParam){
+                this.form.lastname = lastnameParam
+            },
+            dateGet(dateParam){
+                this.form.date = dateParam
+            },
+            startGet(startParam){
+                this.form.dateStart = startParam
+            },
+            endGet(endParam){
+                this.form.dateEnd = endParam
+            },
+            remarkGet(remarkParam){
+                this.form.remark = remarkParam
+            },
 
+            // reset data
+            // getResetData(resetDateParam){
+                
+            // },
+
+            showEdit(){
                 if(this.getIdEdit > 0) {
                     const found = this.getDataForm.find(e => e.id === this.getIdEdit)
-
-                    this.id = found.id
-                    this.name = found.name
-                    this.lastname = found.lastname
-                    this.date = found.date
-                    this.dateStart = found.dateStart
-                    this.dateEnd = found.dateEnd
-                    this.remark = found.remark
+                    this.form.id = found.id
+                    this.form.name = found.name
+                    this.form.lastname = found.lastname
+                    this.form.date = found.date
+                    this.form.dateStart = found.dateStart
+                    this.form.dateEnd = found.dateEnd
+                    this.form.remark = found.remark
+                    console.log(this.form);
                 }
             }
         },
@@ -115,10 +143,9 @@
                 return this.$store.getters.getIdEdit
             },
         },
-        mounted(){
-            // console.log(this.getIdEdit);
+        created(){
             this.showEdit()
-        },
+        }
         
     }
 </script>

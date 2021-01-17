@@ -19,15 +19,15 @@ import Table from '@/components/Page1/Table.vue'
 
 export default {
   name: 'Home',
-  data(){
-    return{
-      searchData: ''
-    }
-  },
   components: {
     Search,
     ButtonAdd,
     Table,
+  },
+  data(){
+    return{
+      searchData: ''
+    }
   },
   methods:{
     searchFilter(search){

@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-form-group label="Calendar:" label-cols="sm-2" label-align="left">
-            <b-form-select v-model="selected" :options="selectDate" ></b-form-select>
+            <b-form-select v-model="selected" :options="selectDate" @input="$emit('selectedDate', selected)"></b-form-select>
         </b-form-group>
     </div>
 </template>
@@ -22,7 +22,7 @@ export default {
                 },
             ],
         }
-    },     
+    }, 
 }
 </script>
 
