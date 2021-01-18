@@ -6,11 +6,18 @@
             <b-form>
                 <b-row>
                     <b-col cols="sm-6">
-                        <Name @nameInput="nameGet" @resetData="resetData" :nameEdit="form.name" />
+                        <Name 
+                            @nameInput="nameGet" 
+                            @resetData="resetData" 
+                            :nameEdit="form.name" 
+                        />
                     </b-col>
 
                     <b-col cols="sm-6">
-                        <Lastname @lastnameInput="lastnameGet" :lastnameEdit="form.lastname"/>
+                        <Lastname 
+                            @lastnameInput="lastnameGet" 
+                            :lastnameEdit="form.lastname"
+                        />
                     </b-col>
 
                     <b-col cols="sm-2">
@@ -35,7 +42,10 @@
                     </b-col>
 
                     <b-col cols="12">
-                        <Remark @remarkInput="remarkGet" :remarkEdit="form.remark"/>
+                        <Remark 
+                            @remarkInput="remarkGet" 
+                            :remarkEdit="form.remark"
+                        />
                     </b-col>
 
                     <b-col cols="6">

@@ -1,8 +1,23 @@
 <template>
     <div id="Table">
-        <b-table class="mt-5" responsive bordered striped hover :items="getDataForm" :filter="searchDataTable" :fields="fields">
-            <template #cell(actions)="row">
-                <b-button size="sm" @click="editDataForm(row.item)" variant="warning">
+        <b-table 
+            class="mt-5" 
+            responsive 
+            bordered 
+            striped 
+            hover 
+            :items="getDataForm" 
+            :filter="searchDataTable" 
+            :fields="fields"
+        >
+            <template 
+                #cell(actions)="row"
+            >
+                <b-button 
+                    size="sm" 
+                    @click="editDataForm(row.item)" 
+                    variant="warning"
+                >
                     <b-icon icon="pencil-square"></b-icon>
                 </b-button>
             </template>

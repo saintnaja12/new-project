@@ -1,7 +1,21 @@
 <template>
   <div>
-    <b-button v-if="getIdEdit === 0" type="button" variant="success ml-5" @click="add()">Create</b-button>
-    <b-button v-else type="button" variant="warning ml-5" @click="edit()">Edit</b-button>
+    <b-button 
+      v-if="getIdEdit === 0" 
+      type="button" 
+      variant="success ml-5" 
+      @click="add()"
+    >
+      Create
+    </b-button>
+    <b-button 
+      v-else 
+      type="button" 
+      variant="warning ml-5" 
+      @click="edit()"
+    >
+      Edit
+    </b-button>
   </div>
 </template>
 

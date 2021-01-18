@@ -17,6 +17,8 @@ Vue.use(IconsPlugin)
 Vue.use(TablePlugin)
 // Page
 Vue.use(PaginationPlugin)
+//moment
+Vue.use(require('vue-moment'))
 
 Vue.config.productionTip = false
 

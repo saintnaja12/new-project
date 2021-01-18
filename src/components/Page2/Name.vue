@@ -1,7 +1,13 @@
 <template>
     <div>
         <b-form-group label="Name:" label-cols="sm-2" label-align="left">
-            <b-form-input type="text" v-model="name" @input="$emit('nameInput', name)" required id="name">
+            <b-form-input 
+                type="text" 
+                v-model="name" 
+                @input="$emit('nameInput', name)" 
+                required 
+                id="name"
+            >
                 
             </b-form-input>
         </b-form-group>

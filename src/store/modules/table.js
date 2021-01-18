@@ -39,7 +39,6 @@ const mutations = {
 
 const state = {
     dataForm:[],
-    dataEdit:[],
     id: 0
 }
 
