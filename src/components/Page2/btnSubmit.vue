@@ -24,9 +24,11 @@
 <script>
 export default {
     name: 'btnSubmit',
-    // props: {
-    //   formCommit: Object
-    // },
+    data(){
+      return{
+        form: this.formCommit
+      }
+    },
     props:['formCommit'],
     computed:{
       getIdEdit(){
@@ -40,10 +42,10 @@ export default {
         this.$router.push('/')
       },
       close(){
-        this.formCommit = ''
+        this.form = ''
       },
       edit(){
-        this.$store.dispatch("editDataTable", this.formCommit).then(this.close())
+        this.$store.dispatch("editDataTable", this.form).then(this.close())
         alert('Edit success')
         this.$router.push('/')
       },

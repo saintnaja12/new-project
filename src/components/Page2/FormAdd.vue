@@ -3,12 +3,12 @@
         <b-card>
             <h1 v-if="form.id == 0">Form Create Data</h1>
             <h1 v-else>Form Edit Data</h1>
+            {{getIdEdit}}
             <b-form>
                 <b-row>
                     <b-col cols="sm-6">
                         <Name 
                             @nameInput="nameGet" 
-                            @resetData="resetData" 
                             :nameEdit="form.name" 
                         />
                     </b-col>
@@ -129,8 +129,9 @@
                 this.form.remark = remarkParam
             },
 
-            resetData(){
-                return this.form
+            resetData(value){
+                this.form = value
+                this.form.id = this.getIdEdit
             },
 
             showEdit(){
@@ -143,6 +144,8 @@
                     this.form.dateStart = found.dateStart
                     this.form.dateEnd = found.dateEnd
                     this.form.remark = found.remark
+                    console.log(this.form.id);
+                    console.log(found.id)
                 }
             },
         },
@@ -157,7 +160,6 @@
         created(){
             this.showEdit()
         }
-        
     }
 </script>
 
