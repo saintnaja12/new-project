@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router/router'
 import store from './store/store'
+import moment from 'moment'
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
@@ -26,5 +27,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  moment,
   render: h => h(App)
 }).$mount('#app')

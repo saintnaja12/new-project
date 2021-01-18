@@ -1,3 +1,4 @@
+// import moment from 'moment'
 
 const actions = {
     addDataTable({ commit }, payload){
@@ -15,6 +16,17 @@ const mutations = {
     ADD_DATA_TABLE(state, {payload}){
         if (payload.id == 0){
             payload.id = state.dataForm.length+1
+
+            // if(payload.date != ''){
+            //     payload.date = moment(payload.date).format('L')
+            //     payload.date.toString()
+            //     console.log(payload.date);
+            // }
+            // else if(payload.dateStart != '' && payload.dateEnd != ''){
+            //     payload.dateStart = moment(payload.dateStart).format('L')
+            //     payload.dateEnd = moment(payload.dateEnd).format('L')
+            // }
+            
             state.dataForm.push(payload) 
         }
         
@@ -23,11 +35,22 @@ const mutations = {
         state.id = payload
     },
     EDIT_DATA_TABLE(state, {payload}){
-        state.dataForm.splice(payload, 1)
+
+        // if(payload.date != ''){
+        //     payload.date = moment(payload.date).format('L')
+        // }
+        // else if(payload.dateStart != '' && payload.dateEnd != ''){
+        //     payload.dateStart = moment(payload.dateStart).format('L')
+        //     payload.dateEnd = moment(payload.dateEnd).format('L')
+        // }
+
+        state.dataForm.splice(payload.id -1)
+
         state.dataForm[payload.id] = {
             id: payload.id,
             name: payload.name,
             lastname: payload.lastname,
+
             date: payload.date,
             dateStart: payload.dateStart,
             dateEnd: payload.dateEnd,

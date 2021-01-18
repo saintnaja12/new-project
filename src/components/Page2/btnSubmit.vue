@@ -1,13 +1,14 @@
 <template>
   <div>
     <b-button 
-      v-if="getIdEdit === 0" 
+      v-if="formCommit.id == 0" 
       type="button" 
       variant="success ml-5" 
       @click="add()"
     >
       Create
     </b-button>
+
     <b-button 
       v-else 
       type="button" 
@@ -16,17 +17,16 @@
     >
       Edit
     </b-button>
+
   </div>
 </template>
 
 <script>
 export default {
     name: 'btnSubmit',
-    data (){
-      return {
-        formProps : ''
-      }
-    },
+    // props: {
+    //   formCommit: Object
+    // },
     props:['formCommit'],
     computed:{
       getIdEdit(){
@@ -44,7 +44,6 @@ export default {
       },
       edit(){
         this.$store.dispatch("editDataTable", this.formCommit).then(this.close())
-        console.log(this.formCommit);
         alert('Edit success')
         this.$router.push('/')
       },

@@ -10,6 +10,16 @@
             :filter="searchDataTable" 
             :fields="fields"
         >
+            <template #cell(date)="data">
+              <span v-if="data.value != ''">{{formatDate(data.value)}}</span> 
+            </template>
+            <template #cell(dateStart)="data">
+               <span v-if="data.value != ''">{{formatDate(data.value)}}</span> 
+            </template>
+            <template #cell(dateEnd)="data">
+               <span v-if="data.value != ''">{{formatDate(data.value)}}</span> 
+            </template>
+
             <template 
                 #cell(actions)="row"
             >
@@ -27,6 +37,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 
 export default {
     name: 'Table',
@@ -63,14 +74,18 @@ export default {
     computed:{
         getDataForm(){
             return this.$store.getters.getDataForm
-        }
+        },
     },
     methods:{
         editDataForm(item){
             this.$store.dispatch('postIdEdit', item.id)
             this.$router.push('/Form')
         },
-    }
+        formatDate(value){
+            return moment(value).format('L')
+        }
+    },
+
 }
 </script>
 

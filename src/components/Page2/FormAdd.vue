@@ -1,7 +1,7 @@
 <template>
     <div id="Form">
         <b-card>
-            <h1 v-if="getIdEdit === 0">Form Create Data</h1>
+            <h1 v-if="form.id == 0">Form Create Data</h1>
             <h1 v-else>Form Edit Data</h1>
             <b-form>
                 <b-row>
@@ -130,7 +130,7 @@
             },
 
             resetData(){
-                this.form = ''
+                return this.form
             },
 
             showEdit(){
@@ -143,7 +143,6 @@
                     this.form.dateStart = found.dateStart
                     this.form.dateEnd = found.dateEnd
                     this.form.remark = found.remark
-                    console.log(this.form);
                 }
             },
         },
@@ -157,7 +156,6 @@
         },
         created(){
             this.showEdit()
-            this.form.id = this.$route.params.getId()
         }
         
     }

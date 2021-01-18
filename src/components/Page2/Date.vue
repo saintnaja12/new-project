@@ -54,7 +54,8 @@
                 data-date-language="th"
                 :date-format-options="{ day: 'numeric', month: 'numeric', year: 'numeric' }"
                 :hide-header="false" 
-                @input="$emit('dateInput', date)">
+                @input="$emit('dateInput', date)"
+                >
             </b-form-datepicker>
         </b-form-group>
     </div>
@@ -81,11 +82,11 @@ export default {
             this.date = this.dateEdit
             this.dateStart = this.startEdit
             this.dateEnd = this.endEdit
-        }
+        },
     },
     mounted(){
         this.edit()
-    }
+    },
 }
 </script>
 

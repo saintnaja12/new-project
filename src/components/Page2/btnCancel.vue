@@ -11,6 +11,7 @@ export default {
       {
         return {
           form:{
+            id:0,
             name: '',
             lastname: '',
             date: '',
