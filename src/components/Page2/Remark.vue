@@ -19,7 +19,6 @@ export default {
     methods:{
         edit(){
             this.remark = this.remarkEdit
-            console.log(this.remark);
         }
     },
     mounted(){

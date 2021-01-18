@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-form-group v-if="dateOption == `Range`" label-cols="sm-2" label-align="left">
+        <b-form-group v-if="dateOption == `Range` && dateEdit == ''" label-cols="sm-2" label-align="left">
             <b-row>
                 <b-col cols="sm-6">
                     <b-form-group label="Date range start:" label-align="left">
@@ -45,15 +45,14 @@ export default {
     props:[
         'dateOption',
         'dateEdit',
-        'dateStartEdit', 
-        'dateEndEdit', 
+        'startEdit', 
+        'endEdit', 
     ],
     methods:{
         edit(){
             this.date = this.dateEdit
-            this.dateStart = this.dateStartEdit
-            this.dateEnd = this.dateEndEdit
-            console.log(this.date);
+            this.dateStart = this.startEdit
+            this.dateEnd = this.endEdit
         }
     },
     mounted(){

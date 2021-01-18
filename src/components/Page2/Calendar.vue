@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-form-group label="Calendar:" label-cols="sm-2" label-align="left">
-            <b-form-select v-model="selected" :options="selectDate" @input="$emit('selectedDate', selected)"></b-form-select>
+            <b-form-select v-model="selected" :options="selectDate" @input="$emit('selectedDate', selected)" ></b-form-select>
         </b-form-group>
     </div>
 </template>
@@ -11,7 +11,7 @@ export default {
     name:'Calendar',
     data(){
         return{
-            selected: 'Date',
+            selected: '',
             selectDate: [{
                     value: 'Date',
                     text: 'Date'
@@ -22,7 +22,13 @@ export default {
                 },
             ],
         }
-    }, 
+    },
+    props:[
+        'dateEdit',
+        'startEdit', 
+        'endEdit', 
+    ], 
+ 
 }
 </script>
 

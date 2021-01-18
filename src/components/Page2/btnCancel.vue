@@ -1,6 +1,6 @@
 <template>
     <div>
-      <b-button type="button" variant="danger mr-5" @click="$emit('resetData',form)">Cancel</b-button>
+      <b-button type="button" variant="danger mr-5" @click="$emit('getResetData',form)">Cancel</b-button>
     </div>
 </template>
 

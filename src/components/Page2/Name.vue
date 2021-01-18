@@ -20,7 +20,6 @@ export default {
     methods:{
         edit(){
             this.name = this.nameEdit
-            console.log(this.name);
         }
     },
     mounted(){

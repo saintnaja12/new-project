@@ -3,11 +3,10 @@
         <b-card>
             <h1 v-if="getIdEdit === 0">Form Create Data</h1>
             <h1 v-else>Form Edit Data</h1>
-                        {{getIdEdit}}
             <b-form>
                 <b-row>
                     <b-col cols="sm-6">
-                        <Name @nameInput="nameGet" :nameEdit="form.name"/>
+                        <Name @nameInput="nameGet" @resetData="resetData" :nameEdit="form.name" />
                     </b-col>
 
                     <b-col cols="sm-6">
@@ -15,7 +14,12 @@
                     </b-col>
 
                     <b-col cols="sm-2">
-                        <Calendar @selectedDate="getSelectedDated" />
+                        <Calendar 
+                            @selectedDate="getSelectedDated" 
+                            :dateEdit="form.date"
+                            :startEdit="form.dateStart"
+                            :endEdit="form.dateEnd"
+                        />
                     </b-col>
 
                     <b-col cols="sm-10">
@@ -24,10 +28,9 @@
                             @dateInput="dateGet" 
                             @startInput="startGet" 
                             @endInput="endGet"
-
                             :dateEdit="form.date"
-                            :startEdit="form.datestart"
-                            :endEdit="form.dateend"
+                            :startEdit="form.dateStart"
+                            :endEdit="form.dateEnd"
                         />
                     </b-col>
 
@@ -43,7 +46,7 @@
 
                     <b-col cols="6">
                         <btnCancel
-
+                            @getResetData="resetData"
                         ></btnCancel>
                     </b-col>
 
@@ -116,10 +119,9 @@
                 this.form.remark = remarkParam
             },
 
-            // reset data
-            // getResetData(resetDateParam){
-                
-            // },
+            resetData(){
+                this.form = ''
+            },
 
             showEdit(){
                 if(this.getIdEdit > 0) {
@@ -133,7 +135,7 @@
                     this.form.remark = found.remark
                     console.log(this.form);
                 }
-            }
+            },
         },
         computed:{
             getDataForm(){
@@ -145,6 +147,7 @@
         },
         created(){
             this.showEdit()
+            this.form.id = this.$route.params.getId()
         }
         
     }

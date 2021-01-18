@@ -19,7 +19,6 @@ export default {
     methods:{
         edit(){
             this.lastname = this.lastnameEdit
-            console.log(this.lastname);
         }
     },
     mounted(){
